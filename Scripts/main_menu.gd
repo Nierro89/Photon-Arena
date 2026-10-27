@@ -1,7 +1,6 @@
 extends MarginContainer
 
 
-
 @onready var hover : AudioStreamPlayer = $hover
 
 
@@ -26,9 +25,6 @@ func _on_play_mouse_entered():
 
 func _on_quit_mouse_entered() -> void:
 	hover.play()
-
-
-
 
 
 func _on_settings_pressed() -> void:

@@ -58,28 +58,26 @@ func spawnBall():
 	get_tree().root.get_child(1).add_child(newBall)
 
 func spawn_rotators() -> void:
-	var half_count = spawn_count / 2
+	var half_count = spawn_count / 2.0
 	var left_count = int(ceil(half_count))
 	var right_count = spawn_count - left_count
 
 	# Left side spawns
 	for i in range(left_count):
 		var rotator_instance = obstacle_scene.instantiate()
-		var position = get_random_spawn_position(true)
-		rotator_instance.position = position
+		rotator_instance.position = get_random_spawn_position(true)
 		rotator_instance.add_to_group("rotators")
 		add_child(rotator_instance)
 
 	# Right side spawns
 	for i in range(right_count):
 		var rotator_instance = obstacle_scene.instantiate()
-		var position = get_random_spawn_position(false)
-		rotator_instance.position = position
+		rotator_instance.position = get_random_spawn_position(false)
 		rotator_instance.add_to_group("rotators")
 		add_child(rotator_instance)
 
 func get_random_spawn_position(left_side: bool) -> Vector2:
-	var half_width = VIEWPORT_WIDTH / 2
+	var half_width = VIEWPORT_WIDTH / 2.0
 	var min_x: float
 	var max_x: float
 

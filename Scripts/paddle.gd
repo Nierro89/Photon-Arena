@@ -15,7 +15,7 @@ func _ready():
 		printerr("The PaddleID has not been asigned to 1 or 2.")
 
 #The process function runs every frame the game calls.
-func _process(delta):
+func _process(_delta):
 	if (Input.is_action_pressed("Up_" + str(PaddleID))):
 		global_position.y -= speed
 	
