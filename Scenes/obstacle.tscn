@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1rd53t5ta51v"]
+
+[ext_resource type="Script" uid="uid://cp6ep40agfk03" path="res://Scripts/obstacle.gd" id="1_2p81s"]
+[ext_resource type="Texture2D" uid="uid://dee4qmhxjq6v1" path="res://Sprites/paddle_3.png" id="1_15o2q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2p81s"]
+radius = 7.0
+height = 60.0
+
+[node name="obstacle" type="StaticBody2D"]
+script = ExtResource("1_2p81s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["obstacle"]]
+scale = Vector2(1, 0.545455)
+texture = ExtResource("1_15o2q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_2p81s")

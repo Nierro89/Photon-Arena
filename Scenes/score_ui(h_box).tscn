@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7fxawhe1yxte"]
+
+[ext_resource type="FontFile" uid="uid://cjhwwl8hvt21l" path="res://fonts/VortexDancerLaser-5yx5V.otf" id="1_xqup0"]
+[ext_resource type="Script" uid="uid://cf1wyik76fuv2" path="res://Scripts/Score_Updater.gd" id="1_ysw5q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xqup0"]
+font_size = 40
+font_color = Color(0.0470588, 0.647059, 0.854902, 1)
+outline_size = 6
+outline_color = Color(0.321569, 0.258824, 0.568627, 1)
+
+[node name="ScoreUi(HBox)" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="P1 Score Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xqup0")
+text = "red: 0"
+label_settings = SubResource("LabelSettings_xqup0")
+script = ExtResource("1_ysw5q")
+
+[node name="VSeparator" type="VSeparator" parent="."]
+layout_mode = 2
+
+[node name="P2 Score Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xqup0")
+text = "blue: 0"
+label_settings = SubResource("LabelSettings_xqup0")
+script = ExtResource("1_ysw5q")
+playerID = 2
