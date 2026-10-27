@@ -17,8 +17,9 @@ func _on_one_player_pressed():
 
 func start_game(mode: Global.GameMode):
 	AudioManager.fade_out(2.0)
+	Global.game_mode = mode
 	await get_tree().create_timer(2.0).timeout
-	get_tree().change_scene_to_file("res://Scene/main.tscn")
+	get_tree().change_scene_to_file("res://Scenes/main.tscn")
 
 
 func _on_quit_pressed():
