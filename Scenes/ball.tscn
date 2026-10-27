@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnisc2a5kd6mq"]
+[gd_scene format=3 uid="uid://dnisc2a5kd6mq"]
 
 [ext_resource type="Script" uid="uid://cthf6f3f7d410" path="res://Scripts/ball.gd" id="1_ij5cq"]
 [ext_resource type="Texture2D" uid="uid://djtsdc4pdh4qx" path="res://Sprites/ball_1.png" id="2_yk4cr"]
@@ -8,21 +8,22 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_yk4cr"]
 radius = 13.0
 
-[node name="Ball" type="CharacterBody2D" groups=["ball"]]
+[node name="Ball" type="CharacterBody2D" unique_id=1403701617 groups=["ball"]]
 collision_layer = 15
 script = ExtResource("1_ij5cq")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1476247736]
 scale = Vector2(1.13514, 1.11111)
 texture = ExtResource("2_yk4cr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=943880338]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_yk4cr")
 
-[node name="sfx_bounce" type="AudioStreamPlayer" parent="."]
+[node name="sfx_bounce" type="AudioStreamPlayer" parent="." unique_id=1037135163]
 stream = ExtResource("3_yk4cr")
 volume_db = -4.0
 bus = &"sfx"
 
-[node name="trail2D" parent="." instance=ExtResource("4_yk4cr")]
+[node name="trail2D" parent="." unique_id=1974400483 instance=ExtResource("4_yk4cr")]
+points = PackedVector2Array(0, -0.97059107)
