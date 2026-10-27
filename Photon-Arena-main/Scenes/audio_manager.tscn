@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://drbmad3tvkcuw"]
+
+[ext_resource type="Script" uid="uid://bjbfluiw7131d" path="res://Scripts/audio_manager.gd" id="1_4tj6f"]
+[ext_resource type="AudioStream" uid="uid://cuhqtsbmrihto" path="res://Sounds/lofi_mm.ogg" id="1_sm2tf"]
+
+[node name="audioManager" type="Node"]
+script = ExtResource("1_4tj6f")
+
+[node name="mm_bkgnd" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_sm2tf")
+bus = &"music"
+parameters/looping = true
