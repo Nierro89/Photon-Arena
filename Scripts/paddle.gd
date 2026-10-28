@@ -1,6 +1,10 @@
 extends CharacterBody2D
+@export var reaction_time: float = 0.3
+@export var aim_error: float = 60.0
 @export var cpu_max_speed: float = 400.0
 
+var target_y: float = 0.0
+var decision_timer: float = 0.0
 #variables
 @export var PaddleID: int = 1
 var speed = 8
@@ -34,15 +38,38 @@ func reset():
 
 func cpu_process(delta: float):
 	var ball = get_tree().get_first_node_in_group("ball")
+	decision_timer -= delta
+
 	if ball == null:
-		return
-	
-	var target_y: float
-	if ball.velocity.x > 0:
-		target_y = ball.global_position.y
-	else:
 		target_y = get_viewport_rect().size.y / 2.0
+	elif decision_timer <= 0.0:
+		decision_timer = reaction_time
+		if ball.velocity.x > 0:
+			target_y = predict_intercept_y(ball) + randf_range(-aim_error, aim_error)
+		else:
+			target_y = get_viewport_rect().size.y / 2.0
 
 	var diff = target_y - global_position.y
 	global_position.y += clamp(diff, -cpu_max_speed * delta, cpu_max_speed * delta)
 	global_position.y = clamp(global_position.y, 80, get_viewport_rect().size.y -80)
+
+func predict_intercept_y(ball: CharacterBody2D):
+	var pos = ball.global_position
+	var vel = ball.velocity
+	var top := 0.0
+	var bottom := get_viewport_rect().size.y
+	var time_step := 0.02
+	var steps := 0
+
+	while pos.x < global_position.x and steps < 5000:
+		steps += 1
+		pos += vel * time_step
+
+		if pos.y < top:
+			pos.y = top
+			vel.y = abs(vel.y)
+		elif pos.y > bottom:
+			pos.y = bottom
+			vel.y = -abs(vel.y)
+
+	return pos.y
