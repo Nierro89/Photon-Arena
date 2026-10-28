@@ -59,11 +59,43 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -80.0
-offset_right = 169.0
+offset_top = -344.0
+offset_right = 240.0
+offset_bottom = -275.0
 grow_vertical = 0
-text = "up: w
-down : s"
+text = "Player 1
+Controls:"
+label_settings = SubResource("LabelSettings_ce3w2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="TextureRect" unique_id=1853521179]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -288.0
+offset_right = 232.0
+offset_bottom = -183.0
+grow_vertical = 0
+text = "Up - w
+down - s"
+label_settings = SubResource("LabelSettings_ce3w2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="TextureRect" unique_id=386019564]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 920.0
+offset_top = -288.0
+offset_right = 1154.0
+offset_bottom = -183.0
+grow_vertical = 0
+text = "Up - ↑
+down - ↓"
 label_settings = SubResource("LabelSettings_ce3w2")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -75,12 +107,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -398.0
-offset_top = -80.0
+offset_left = -240.0
+offset_top = -344.0
+offset_bottom = -272.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "up: up arrow
-down: down arrow"
+text = "Player 2
+Controls"
 label_settings = SubResource("LabelSettings_n45e2")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -97,9 +130,9 @@ theme = ExtResource("4_opfnp")
 [node name="2 Player" type="Button" parent="VBoxContainer/Control" unique_id=1439839858]
 layout_mode = 0
 offset_left = -152.0
-offset_top = -108.0
+offset_top = -12.0
 offset_right = 216.0
-offset_bottom = -36.0
+offset_bottom = 60.0
 theme_override_fonts/font = ExtResource("1_48xlc")
 theme_override_font_sizes/font_size = 50
 action_mode = 0
@@ -108,9 +141,9 @@ text = "2 Players"
 [node name="settings" type="Button" parent="VBoxContainer/Control" unique_id=1110695394]
 layout_mode = 0
 offset_left = -152.0
-offset_top = 52.0
+offset_top = 76.0
 offset_right = 216.0
-offset_bottom = 124.0
+offset_bottom = 148.0
 theme_override_fonts/font = ExtResource("1_48xlc")
 theme_override_font_sizes/font_size = 50
 text = "settings"
@@ -118,9 +151,9 @@ text = "settings"
 [node name="Quit" type="Button" parent="VBoxContainer/Control" unique_id=1140922153]
 layout_mode = 0
 offset_left = -152.0
-offset_top = 132.0
+offset_top = 164.0
 offset_right = 216.0
-offset_bottom = 204.0
+offset_bottom = 236.0
 theme_override_fonts/font = ExtResource("1_48xlc")
 theme_override_font_sizes/font_size = 50
 text = "quit"
@@ -128,9 +161,9 @@ text = "quit"
 [node name="1 Player" type="Button" parent="VBoxContainer/Control" unique_id=1360338781]
 layout_mode = 0
 offset_left = -152.0
-offset_top = -28.0
+offset_top = -100.0
 offset_right = 216.0
-offset_bottom = 44.0
+offset_bottom = -28.0
 theme_override_fonts/font = ExtResource("1_48xlc")
 theme_override_font_sizes/font_size = 50
 text = "1 Player"
