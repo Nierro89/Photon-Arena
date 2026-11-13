@@ -1,5 +1,7 @@
 extends Area2D
 
+# GoalID = the ID of the player who SCORES when the ball enters their goal.
+# (Goal 1 sits behind Player 2; the ball passes Player 2 earsn Player 1 a point.)
 @export var GoalID: int = 0
 @onready var sfx_score: AudioStreamPlayer = $sfx_score
 

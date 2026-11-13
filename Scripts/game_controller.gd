@@ -51,7 +51,7 @@ func startNextRound():
 
 func endGame():
 	if Global.game_mode == Global.GameMode.SINGLE_PLAYER:
-		var won: bool = Global.P2_Score > Global.P1_Score
+		var won: bool = Global.P1_Score > Global.P2_Score
 		if won:
 			HighScores.record_score({
 				"difficulty": Global.cpu_difficulty,
@@ -66,7 +66,8 @@ func endGame():
 	get_tree().change_scene_to_file("res://Scenes/end screen.tscn")
 
 func spawnBall():
-	var direction = Vector2.from_angle(randf_range(0, 359))
+	var side := 1.0 if randf() < 0.5 else -1.0
+	var direction := Vector2(side, 0.0).rotated(randi_range(-PI / 3.0, PI / 3.0))
 	var newBall = Ball.instantiate()
 	newBall.global_position = get_viewport().get_visible_rect().size / 2
 
@@ -110,6 +111,6 @@ func get_random_spawn_position(left_side: bool) -> Vector2:
 
 func _calculate_score(_won: bool) -> int:
 	var weight: float = DIFFICULTY_WEIGHTS.get(Global.cpu_difficulty, 1.0)
-	var margin: int = Global.P2_Score - Global.P1_Score
+	var margin: int = Global.P1_Score - Global.P2_Score
 	var base: int = 500 + margin * 100
 	return int(base * weight)

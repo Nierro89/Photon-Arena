@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbpkucricheyf"]
+[gd_scene format=3 uid="uid://cbpkucricheyf"]
 
 [ext_resource type="PackedScene" uid="uid://3ty4hsqrfept" path="res://Scenes/paddle.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://ca1uxlawbmyy4" path="res://Scripts/game_controller.gd" id="1_jjvhh"]
@@ -15,50 +15,50 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jjvhh"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=2091993992]
 script = ExtResource("1_jjvhh")
 obstacle_scene = ExtResource("4_344ge")
 
-[node name="Paddle" parent="." instance=ExtResource("1_jjgbg")]
+[node name="Paddle" parent="." unique_id=256765840 instance=ExtResource("1_jjgbg")]
 position = Vector2(48, 320)
 
-[node name="Paddle2" parent="." instance=ExtResource("1_jjgbg")]
+[node name="Paddle2" parent="." unique_id=1459944881 instance=ExtResource("1_jjgbg")]
 position = Vector2(1104, 320)
 PaddleID = 2
 
-[node name="TopWall" type="StaticBody2D" parent="."]
+[node name="TopWall" type="StaticBody2D" parent="." unique_id=382664471]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall" unique_id=2085620981]
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_bo1nx")
 
-[node name="BottomWall" type="StaticBody2D" parent="."]
+[node name="BottomWall" type="StaticBody2D" parent="." unique_id=444681450]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall" unique_id=1783614354]
 position = Vector2(0, 648)
 shape = SubResource("WorldBoundaryShape2D_8gbba")
 
-[node name="Goal" parent="." instance=ExtResource("3_8gbba")]
+[node name="Goal" parent="." unique_id=1914851329 instance=ExtResource("3_8gbba")]
 position = Vector2(0, 320)
-GoalID = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
-rotation = 1.5708
-shape = SubResource("WorldBoundaryShape2D_jjvhh")
-
-[node name="Goal2" parent="." instance=ExtResource("3_8gbba")]
-position = Vector2(1152, 320)
-rotation = 3.14159
 GoalID = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal" unique_id=1890203138]
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_jjvhh")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Goal2" parent="." unique_id=1705294780 instance=ExtResource("3_8gbba")]
+position = Vector2(1152, 320)
+rotation = 3.14159
+GoalID = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal2" unique_id=2146418817]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_jjvhh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=979102912]
 layer = -1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=419815020]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -67,11 +67,12 @@ grow_vertical = 2
 texture = ExtResource("4_6bp64")
 expand_mode = 1
 
-[node name="CountdownAnimation" parent="CanvasLayer" instance=ExtResource("4_jjvhh")]
+[node name="CountdownAnimation" parent="CanvasLayer" unique_id=1502867488 instance=ExtResource("4_jjvhh")]
 
-[node name="ScoreUi(HBox)" parent="CanvasLayer" instance=ExtResource("5_kry3j")]
+[node name="ScoreUi(HBox)" parent="CanvasLayer" unique_id=446568162 instance=ExtResource("5_kry3j")]
+offset_bottom = 48.0
 
-[node name="music_bg" type="AudioStreamPlayer" parent="."]
+[node name="music_bg" type="AudioStreamPlayer" parent="." unique_id=1948727446]
 stream = ExtResource("7_6bp64")
 volume_db = 1.0
 bus = &"music"
