@@ -7,6 +7,7 @@ const CPU_DIFFICULTIES := {
 }
 var cpu_difficulty:= "normal"
 var cpu_level := 1
+var new_high_score := false
 
 enum GameMode { TWO_PLAYER, SINGLE_PLAYER }
 

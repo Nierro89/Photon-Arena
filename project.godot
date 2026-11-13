@@ -23,6 +23,11 @@ config/icon="res://Sprites/icon.svg"
 
 Global="*res://Scripts/global.gd"
 AudioManager="*res://Scenes/audio_manager.tscn"
+HighScores="*uid://rcgetsnsqdq1"
+
+[dotnet]
+
+project/assembly_name="Challenge1- Pong"
 
 [editor_plugins]
 

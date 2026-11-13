@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://brm0qqp02sq4a"]
+
+[ext_resource type="Script" uid="uid://t5p5uym0siv0" path="res://Scripts/difficulty_select.gd" id="1_jnktv"]
+[ext_resource type="Texture2D" uid="uid://ccblk7f0dgg6s" path="res://Sprites/pongBG.png" id="2_7lp5y"]
+[ext_resource type="FontFile" uid="uid://cjhwwl8hvt21l" path="res://fonts/VortexDancerLaser-5yx5V.otf" id="3_4fhga"]
+[ext_resource type="Theme" uid="uid://qtqwe4uege1o" path="res://Scenes/main_menu.tres" id="4_chmkc"]
+[ext_resource type="FontFile" uid="uid://bky6yu22q3u5p" path="res://fonts/VortexDancerLaserItalic-6Rp5A.otf" id="5_gh66d"]
+[ext_resource type="AudioStream" uid="uid://bpt15cqnlk06j" path="res://Sounds/ball bounce sound.wav" id="6_chmkc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rrukj"]
+font_size = 65
+font_color = Color(0.101609826, 0.6037995, 0.8705272, 1)
+outline_size = 10
+outline_color = Color(0.317525, 0.26672772, 0.5686275, 1)
+
+[node name="difficulty_select" type="MarginContainer" unique_id=1307483717]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jnktv")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1468235928]
+layout_mode = 2
+texture = ExtResource("2_7lp5y")
+expand_mode = 1
+
+[node name="SelectDifficulty" type="Label" parent="TextureRect" unique_id=61866714]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 1152.0
+offset_bottom = 166.0
+theme_override_fonts/font = ExtResource("3_4fhga")
+theme_override_font_sizes/font_size = 64
+text = "Select Difficulty"
+label_settings = SubResource("LabelSettings_rrukj")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2063459719]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=613541793]
+layout_mode = 2
+theme = ExtResource("4_chmkc")
+
+[node name="Easy" type="Button" parent="VBoxContainer/Control" unique_id=1872561104]
+layout_mode = 0
+offset_left = -152.0
+offset_top = -100.0
+offset_right = 216.0
+offset_bottom = -28.0
+theme_override_fonts/font = ExtResource("5_gh66d")
+theme_override_font_sizes/font_size = 50
+text = "Easy"
+
+[node name="Normal" type="Button" parent="VBoxContainer/Control" unique_id=1951450070]
+layout_mode = 0
+offset_left = -152.0
+offset_top = -12.0
+offset_right = 216.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("5_gh66d")
+theme_override_font_sizes/font_size = 50
+text = "Normal"
+
+[node name="Hard" type="Button" parent="VBoxContainer/Control" unique_id=692468864]
+layout_mode = 0
+offset_left = -152.0
+offset_top = 76.0
+offset_right = 216.0
+offset_bottom = 148.0
+theme_override_fonts/font = ExtResource("5_gh66d")
+theme_override_font_sizes/font_size = 50
+text = "Hard"
+
+[node name="back" type="Button" parent="VBoxContainer/Control" unique_id=952683802]
+layout_mode = 0
+offset_left = -152.0
+offset_top = 164.0
+offset_right = 216.0
+offset_bottom = 236.0
+theme_override_fonts/font = ExtResource("5_gh66d")
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="hover" type="AudioStreamPlayer" parent="." unique_id=1961443265]
+stream = ExtResource("6_chmkc")
+
+[connection signal="mouse_entered" from="VBoxContainer/Control/Easy" to="." method="_on_easy_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Control/Easy" to="." method="_on_easy_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Control/Normal" to="." method="_on_normal_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Control/Normal" to="." method="_on_normal_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Control/Hard" to="." method="_on_hard_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Control/Hard" to="." method="_on_hard_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Control/back" to="." method="_on_back_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Control/back" to="." method="_on_back_pressed"]

@@ -12,6 +12,7 @@ signal resetPaddle
 const VIEWPORT_WIDTH = 1152
 const VIEWPORT_HEIGHT = 648
 const EDGE_MARGIN = 100
+const DIFFICULTY_WEIGHTS := { "easy": 1.0, "normal": 2.0, "hard": 3.0}
 
 func _ready():
 	startGame()
@@ -27,6 +28,8 @@ func startGame():
 	
 	Global.P1_Score = 0
 	Global.P2_Score = 0
+	Global.cpu_level = 1 
+	Global.new_high_score = false
 	resetPaddle.emit()
 	
 	startNextRound()
@@ -47,6 +50,19 @@ func startNextRound():
 	spawnBall()
 
 func endGame():
+	if Global.game_mode == Global.GameMode.SINGLE_PLAYER:
+		var won: bool = Global.P2_Score > Global.P1_Score
+		if won:
+			HighScores.record_score({
+				"difficulty": Global.cpu_difficulty,
+				"level": Global.cpu_level,
+				"player_score": Global.P1_Score,
+				"cpu_score": Global.P2_Score,
+				"won": won,
+				"score": _calculate_score(won),
+			})
+			var scores: Array = HighScores.load_scores()
+			Global.new_high_score = scores[0]["score"] <= float(_calculate_score(won))
 	get_tree().change_scene_to_file("res://Scenes/end screen.tscn")
 
 func spawnBall():
@@ -91,3 +107,9 @@ func get_random_spawn_position(left_side: bool) -> Vector2:
 	var x = randf_range(min_x, max_x)
 	var y = randf_range(EDGE_MARGIN, VIEWPORT_HEIGHT - EDGE_MARGIN)
 	return Vector2(x, y)
+
+func _calculate_score(_won: bool) -> int:
+	var weight: float = DIFFICULTY_WEIGHTS.get(Global.cpu_difficulty, 1.0)
+	var margin: int = Global.P2_Score - Global.P1_Score
+	var base: int = 500 + margin * 100
+	return int(base * weight)

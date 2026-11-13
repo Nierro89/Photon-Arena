@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://ba2ibp0utxvvy"]
+[gd_scene format=4 uid="uid://ba2ibp0utxvvy"]
 
 [ext_resource type="FontFile" uid="uid://bky6yu22q3u5p" path="res://fonts/VortexDancerLaserItalic-6Rp5A.otf" id="1_6mhyf"]
 [ext_resource type="Texture2D" uid="uid://ccblk7f0dgg6s" path="res://Sprites/pongBG.png" id="1_kbl72"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c40uga035nab7" path="res://Scripts/play_again.gd" id="3_kbl72"]
 [ext_resource type="Script" uid="uid://bbfoj2frs6w8q" path="res://Scripts/quit.gd" id="4_fkpik"]
 [ext_resource type="PackedScene" uid="uid://c7fxawhe1yxte" path="res://Scenes/score_ui(h_box).tscn" id="5_tss2i"]
+[ext_resource type="Script" uid="uid://bh0cn825akh61" path="res://Scripts/score_list.gd" id="8_fkpik"]
 
 [sub_resource type="Image" id="Image_n45e2"]
 data = {
@@ -43,6 +44,15 @@ font_weight = 600
 subpixel_positioning = 0
 msdf_pixel_range = 14
 msdf_size = 128
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
 cache/0/16/0/ascent = 18.0
 cache/0/16/0/descent = 5.0
 cache/0/16/0/underline_position = 1.60938
@@ -1088,30 +1098,31 @@ font_color = Color(0.0470588, 0.647059, 0.854902, 1)
 outline_size = 10
 outline_color = Color(0.321569, 0.258824, 0.568627, 1)
 
-[node name="endGame" type="TextureRect"]
+[node name="endGame" type="MarginContainer" unique_id=667849035]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1647495750]
+layout_mode = 2
 texture = ExtResource("1_kbl72")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 152.0
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect" unique_id=1952030975]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="VBoxContainer"]
+[node name="Control" type="Control" parent="TextureRect/VBoxContainer" unique_id=1521777104]
 layout_mode = 2
 theme = SubResource("Theme_kbl72")
 
-[node name="PlayAgain" type="Button" parent="VBoxContainer/Control"]
-layout_mode = 2
+[node name="PlayAgain" type="Button" parent="TextureRect/VBoxContainer/Control" unique_id=1735634940]
+layout_mode = 0
 offset_left = 392.0
 offset_top = 168.0
 offset_right = 765.0
@@ -1122,8 +1133,8 @@ theme_override_font_sizes/font_size = 50
 text = "play again"
 script = ExtResource("3_kbl72")
 
-[node name="Quit" type="Button" parent="VBoxContainer/Control"]
-layout_mode = 2
+[node name="Quit" type="Button" parent="TextureRect/VBoxContainer/Control" unique_id=1262375912]
+layout_mode = 0
 offset_left = 504.0
 offset_top = 240.0
 offset_right = 649.0
@@ -1134,7 +1145,7 @@ theme_override_font_sizes/font_size = 50
 text = "quit"
 script = ExtResource("4_fkpik")
 
-[node name="Winner Label" type="Label" parent="VBoxContainer"]
+[node name="Winner Label" type="Label" parent="TextureRect/VBoxContainer" unique_id=1161185238]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "!winner!"
@@ -1143,13 +1154,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_h3fnl")
 
-[node name="gamov_sfx" type="AudioStreamPlayer" parent="VBoxContainer/Winner Label"]
+[node name="gamov_sfx" type="AudioStreamPlayer" parent="TextureRect/VBoxContainer/Winner Label" unique_id=2019211597]
 stream = ExtResource("3_h3fnl")
 
-[node name="button" type="AudioStreamPlayer" parent="VBoxContainer/Winner Label"]
+[node name="button" type="AudioStreamPlayer" parent="TextureRect/VBoxContainer/Winner Label" unique_id=2130931344]
 
-[node name="ScoreUi(HBox)" parent="VBoxContainer" instance=ExtResource("5_tss2i")]
+[node name="ScoreUi(HBox)" parent="TextureRect/VBoxContainer" unique_id=1380136615 instance=ExtResource("5_tss2i")]
 layout_mode = 2
 
-[connection signal="mouse_entered" from="VBoxContainer/Control/PlayAgain" to="VBoxContainer/Winner Label" method="_on_play_again_mouse_entered"]
-[connection signal="mouse_entered" from="VBoxContainer/Control/Quit" to="VBoxContainer/Winner Label" method="_on_quit_mouse_entered"]
+[node name="ScoreList" type="VBoxContainer" parent="TextureRect/VBoxContainer" unique_id=840145561]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+script = ExtResource("8_fkpik")
+
+[connection signal="mouse_entered" from="TextureRect/VBoxContainer/Control/PlayAgain" to="TextureRect/VBoxContainer/Winner Label" method="_on_play_again_mouse_entered"]
+[connection signal="mouse_entered" from="TextureRect/VBoxContainer/Control/Quit" to="TextureRect/VBoxContainer/Winner Label" method="_on_quit_mouse_entered"]

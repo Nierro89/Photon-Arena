@@ -12,15 +12,12 @@ func _on_play_pressed():
 
 
 func _on_one_player_pressed():
-	start_game(Global.GameMode.SINGLE_PLAYER)
+	Global.game_mode = Global.GameMode.SINGLE_PLAYER
+	get_tree().change_scene_to_file("res://Scenes/difficulty_select.tscn")
 
-
-func start_game(mode: Global.GameMode):
-	AudioManager.fade_out(2.0)
+func start_game(mode: Global.GameMode) -> void:
 	Global.game_mode = mode
-	await get_tree().create_timer(2.0).timeout
-	get_tree().change_scene_to_file("res://Scenes/main.tscn")
-
+	AudioManager.transition_to_arena()
 
 func _on_quit_pressed():
 	get_tree().quit()
