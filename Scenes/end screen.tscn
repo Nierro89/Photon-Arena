@@ -2,6 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://bky6yu22q3u5p" path="res://fonts/VortexDancerLaserItalic-6Rp5A.otf" id="1_6mhyf"]
 [ext_resource type="Texture2D" uid="uid://ccblk7f0dgg6s" path="res://Sprites/pongBG.png" id="1_kbl72"]
+[ext_resource type="Script" uid="uid://carkoi3pf4xho" path="res://Scripts/end_screen.gd" id="1_tss2i"]
 [ext_resource type="Script" uid="uid://crxoal5iqihkb" path="res://Scripts/winner_label.gd" id="2_h3fnl"]
 [ext_resource type="AudioStream" uid="uid://cvfwseeax5l0i" path="res://Sounds/Gamov_sfx_pong.ogg" id="3_h3fnl"]
 [ext_resource type="Script" uid="uid://c40uga035nab7" path="res://Scripts/play_again.gd" id="3_kbl72"]
@@ -1104,6 +1105,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tss2i")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1647495750]
 layout_mode = 2
@@ -1123,10 +1125,10 @@ theme = SubResource("Theme_kbl72")
 
 [node name="PlayAgain" type="Button" parent="TextureRect/VBoxContainer/Control" unique_id=1735634940]
 layout_mode = 0
-offset_left = 392.0
-offset_top = 168.0
-offset_right = 765.0
-offset_bottom = 228.0
+offset_left = 385.0
+offset_top = 245.0
+offset_right = 758.0
+offset_bottom = 305.0
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_6mhyf")
 theme_override_font_sizes/font_size = 50
@@ -1136,9 +1138,9 @@ script = ExtResource("3_kbl72")
 [node name="Quit" type="Button" parent="TextureRect/VBoxContainer/Control" unique_id=1262375912]
 layout_mode = 0
 offset_left = 504.0
-offset_top = 240.0
+offset_top = 326.0
 offset_right = 649.0
-offset_bottom = 300.0
+offset_bottom = 386.0
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_6mhyf")
 theme_override_font_sizes/font_size = 50
@@ -1159,6 +1161,21 @@ stream = ExtResource("3_h3fnl")
 
 [node name="button" type="AudioStreamPlayer" parent="TextureRect/VBoxContainer/Winner Label" unique_id=2130931344]
 
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer" unique_id=925255255]
+layout_mode = 2
+text = "You made the board! Enter your name:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameInput" type="LineEdit" parent="TextureRect/VBoxContainer" unique_id=740912930]
+layout_mode = 2
+placeholder_text = "AAA"
+max_length = 12
+
+[node name="SaveButton" type="Button" parent="TextureRect/VBoxContainer" unique_id=1594530184]
+layout_mode = 2
+text = "Save Score"
+
 [node name="ScoreUi(HBox)" parent="TextureRect/VBoxContainer" unique_id=1380136615 instance=ExtResource("5_tss2i")]
 layout_mode = 2
 
@@ -1171,3 +1188,4 @@ script = ExtResource("8_fkpik")
 
 [connection signal="mouse_entered" from="TextureRect/VBoxContainer/Control/PlayAgain" to="TextureRect/VBoxContainer/Winner Label" method="_on_play_again_mouse_entered"]
 [connection signal="mouse_entered" from="TextureRect/VBoxContainer/Control/Quit" to="TextureRect/VBoxContainer/Winner Label" method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]

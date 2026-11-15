@@ -22,4 +22,4 @@ func scored(body):
 			sfx_score.play()
 	
 	body.queue_free()
-	owner.startNextRound()
+	owner.call_deferred("startNextRound")

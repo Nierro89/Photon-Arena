@@ -12,6 +12,7 @@ func _display_scores() -> void:
 		var row := Label.new()
 		row.text = "%d. %d - %s - %s" % [
 			i + 1,
+			str(entry.get("name", "???")),
 			int(entry["score"]),
 			entry["difficulty"],
 			entry["date"],

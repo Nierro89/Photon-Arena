@@ -35,7 +35,13 @@ func startGame():
 	startNextRound()
 
 func startNextRound():
-	if (Global.P1_Score == 10 or Global.P2_Score == 10):
+	var match_over: bool = false
+	if Global.game_mode == Global.GameMode.SINGLE_PLAYER:
+		match_over = Global.P2_Score == 10
+	else:
+		match_over = Global.P1_Score == 10 or Global.P2_Score == 10
+	
+	if match_over:
 		call_deferred("endGame")
 		return
 
@@ -50,19 +56,6 @@ func startNextRound():
 	spawnBall()
 
 func endGame():
-	if Global.game_mode == Global.GameMode.SINGLE_PLAYER:
-		var won: bool = Global.P1_Score > Global.P2_Score
-		if won:
-			HighScores.record_score({
-				"difficulty": Global.cpu_difficulty,
-				"level": Global.cpu_level,
-				"player_score": Global.P1_Score,
-				"cpu_score": Global.P2_Score,
-				"won": won,
-				"score": _calculate_score(won),
-			})
-			var scores: Array = HighScores.load_scores()
-			Global.new_high_score = scores[0]["score"] <= float(_calculate_score(won))
 	get_tree().change_scene_to_file("res://Scenes/end screen.tscn")
 
 func spawnBall():
