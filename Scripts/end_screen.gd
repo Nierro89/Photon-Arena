@@ -1,6 +1,6 @@
 extends MarginContainer
 
-
+@onready var score_list: VBoxContainer = %ScoreList
 
 func _ready() -> void:
 	_display_scores()
@@ -31,3 +31,19 @@ func _on_save_button_pressed() -> void:
 	$SaveButton.visible = false
 	$PromptLabel.visible = false
 	_display_scores()
+
+func _display_scores() -> void:
+	for child in score_list.get_children():
+		child.queue_free()
+	var scores: Array = HighScores.load_scores()
+	for i in scores.size():
+		var entry: Dictionary = scores[i]
+		var row := Label.new()
+		row.text = "%d. %s - %d - %s - %s" % [
+		i + 1,
+		str(entry.get("name", "???")),
+		int(entry["score"]),
+		entry["difficulty"],
+		entry["date"],
+		]
+		score_list.add_child(row)

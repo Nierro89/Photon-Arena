@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://c40uga035nab7" path="res://Scripts/play_again.gd" id="3_kbl72"]
 [ext_resource type="Script" uid="uid://bbfoj2frs6w8q" path="res://Scripts/quit.gd" id="4_fkpik"]
 [ext_resource type="PackedScene" uid="uid://c7fxawhe1yxte" path="res://Scenes/score_ui(h_box).tscn" id="5_tss2i"]
-[ext_resource type="Script" uid="uid://bh0cn825akh61" path="res://Scripts/score_list.gd" id="8_fkpik"]
 
 [sub_resource type="Image" id="Image_n45e2"]
 data = {
@@ -1116,8 +1115,6 @@ expand_mode = 1
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Control" type="Control" parent="TextureRect/VBoxContainer" unique_id=1521777104]
 layout_mode = 2
@@ -1161,20 +1158,38 @@ stream = ExtResource("3_h3fnl")
 
 [node name="button" type="AudioStreamPlayer" parent="TextureRect/VBoxContainer/Winner Label" unique_id=2130931344]
 
-[node name="Label" type="Label" parent="TextureRect/VBoxContainer" unique_id=925255255]
+[node name="Control2" type="Control" parent="TextureRect/VBoxContainer" unique_id=1858753215]
 layout_mode = 2
-text = "You made the board! Enter your name:"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme = SubResource("Theme_kbl72")
 
-[node name="NameInput" type="LineEdit" parent="TextureRect/VBoxContainer" unique_id=740912930]
-layout_mode = 2
+[node name="SaveButton" type="Button" parent="TextureRect/VBoxContainer/Control2" unique_id=1594530184]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 100.0
+offset_right = 718.3976
+offset_bottom = 131.0
+scale = Vector2(0.94675416, 0.65079445)
+theme_override_fonts/font = ExtResource("1_6mhyf")
+text = "Save Score"
+
+[node name="NameInput" type="LineEdit" parent="TextureRect/VBoxContainer/Control2" unique_id=740912930]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 68.0
+offset_right = 704.0
+offset_bottom = 99.0
 placeholder_text = "AAA"
 max_length = 12
 
-[node name="SaveButton" type="Button" parent="TextureRect/VBoxContainer" unique_id=1594530184]
-layout_mode = 2
-text = "Save Score"
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/Control2" unique_id=925255255]
+layout_mode = 0
+offset_top = 44.0
+offset_right = 1152.0
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("1_6mhyf")
+text = "You made the board! Enter your name:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScoreUi(HBox)" parent="TextureRect/VBoxContainer" unique_id=1380136615 instance=ExtResource("5_tss2i")]
 layout_mode = 2
@@ -1184,8 +1199,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
-script = ExtResource("8_fkpik")
 
 [connection signal="mouse_entered" from="TextureRect/VBoxContainer/Control/PlayAgain" to="TextureRect/VBoxContainer/Winner Label" method="_on_play_again_mouse_entered"]
 [connection signal="mouse_entered" from="TextureRect/VBoxContainer/Control/Quit" to="TextureRect/VBoxContainer/Winner Label" method="_on_quit_mouse_entered"]
-[connection signal="pressed" from="TextureRect/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/Control2/SaveButton" to="." method="_on_save_button_pressed"]
