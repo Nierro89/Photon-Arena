@@ -13,6 +13,9 @@ var sfx_index: int
 
 
 func _ready() -> void:
+	master_index = AudioServer.get_bus_index("Master")
+	music_index = AudioServer.get_bus_index("music")
+	sfx_index = AudioServer.get_bus_index("sfx")
 	master_slide.value = Global.master_volume
 	music_slide.value = Global.music_volume
 	sfx_slide.value = Global.sfx_volume
