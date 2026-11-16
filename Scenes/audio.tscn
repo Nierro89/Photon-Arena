@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://cgaa2xt071sfd"]
+[gd_scene format=4 uid="uid://cgaa2xt071sfd"]
 
 [ext_resource type="StyleBox" uid="uid://dkrqogfbejoci" path="res://Theme/main_menu.tres" id="1_4thc6"]
 [ext_resource type="Texture2D" uid="uid://ccblk7f0dgg6s" path="res://Sprites/pongBG.png" id="1_c8j57"]
@@ -42,6 +42,15 @@ font_weight = 600
 subpixel_positioning = 0
 msdf_pixel_range = 14
 msdf_size = 128
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
 cache/0/16/0/ascent = 18.0
 cache/0/16/0/descent = 5.0
 cache/0/16/0/underline_position = 1.60938
@@ -1157,7 +1166,7 @@ font_color = Color(0.0470588, 0.647059, 0.854902, 1)
 outline_size = 5
 outline_color = Color(0.321569, 0.258824, 0.568627, 1)
 
-[node name="audio" type="TextureRect"]
+[node name="audio" type="TextureRect" unique_id=1416198184]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1168,7 +1177,7 @@ texture = ExtResource("1_c8j57")
 expand_mode = 1
 script = ExtResource("2_pess6")
 
-[node name="audio_label" type="Label" parent="."]
+[node name="audio_label" type="Label" parent="." unique_id=1750845141]
 layout_mode = 0
 offset_left = 448.0
 offset_top = 128.0
@@ -1179,7 +1188,7 @@ label_settings = SubResource("LabelSettings_4thc6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="master_label" type="Label" parent="."]
+[node name="master_label" type="Label" parent="." unique_id=1965048318]
 layout_mode = 0
 offset_left = 512.0
 offset_top = 264.0
@@ -1188,7 +1197,7 @@ offset_bottom = 290.0
 text = "master"
 label_settings = SubResource("LabelSettings_k46ri")
 
-[node name="music_label" type="Label" parent="."]
+[node name="music_label" type="Label" parent="." unique_id=737058026]
 layout_mode = 0
 offset_left = 528.0
 offset_top = 328.0
@@ -1197,7 +1206,7 @@ offset_bottom = 354.0
 text = "music"
 label_settings = SubResource("LabelSettings_etkin")
 
-[node name="sfx_label" type="Label" parent="."]
+[node name="sfx_label" type="Label" parent="." unique_id=2089977525]
 layout_mode = 0
 offset_left = 496.0
 offset_top = 392.0
@@ -1206,11 +1215,11 @@ offset_bottom = 418.0
 text = "sound fx"
 label_settings = SubResource("LabelSettings_fkw8n")
 
-[node name="hover" type="AudioStreamPlayer" parent="."]
+[node name="hover" type="AudioStreamPlayer" parent="." unique_id=831834641]
 stream = ExtResource("4_pess6")
 bus = &"sfx"
 
-[node name="master_slide" type="HSlider" parent="."]
+[node name="master_slide" type="HSlider" parent="." unique_id=1707924739]
 layout_mode = 0
 offset_left = 384.0
 offset_top = 288.0
@@ -1220,7 +1229,7 @@ max_value = 1.0
 step = 0.001
 value = 1.0
 
-[node name="music_slide" type="HSlider" parent="."]
+[node name="music_slide" type="HSlider" parent="." unique_id=77263437]
 layout_mode = 0
 offset_left = 384.0
 offset_top = 352.0
@@ -1230,7 +1239,7 @@ max_value = 1.0
 step = 0.001
 value = 1.0
 
-[node name="sfx_slide" type="HSlider" parent="."]
+[node name="sfx_slide" type="HSlider" parent="." unique_id=608862434]
 layout_mode = 0
 offset_left = 384.0
 offset_top = 416.0
@@ -1241,7 +1250,7 @@ step = 0.001
 value = 1.0
 tick_count = 1
 
-[node name="mute_box" type="CheckBox" parent="."]
+[node name="mute_box" type="CheckBox" parent="." unique_id=2069237740]
 layout_mode = 0
 offset_left = 832.0
 offset_top = 320.0
@@ -1251,7 +1260,7 @@ theme_override_fonts/font = ExtResource("3_fqpxi")
 theme_override_font_sizes/font_size = 25
 text = "mute"
 
-[node name="back" type="Button" parent="."]
+[node name="back" type="Button" parent="." unique_id=1073020030]
 layout_mode = 0
 offset_left = 446.0
 offset_top = 512.0
@@ -1261,7 +1270,7 @@ theme_override_fonts/font = ExtResource("3_fqpxi")
 theme_override_font_sizes/font_size = 45
 text = "back"
 
-[node name="reset" type="Button" parent="."]
+[node name="reset" type="Button" parent="." unique_id=183779910]
 layout_mode = 0
 offset_left = 832.0
 offset_top = 424.0
@@ -1271,12 +1280,7 @@ theme_override_fonts/font = ExtResource("3_fqpxi")
 theme_override_font_sizes/font_size = 25
 text = "reset"
 
-[connection signal="value_changed" from="master_slide" to="." method="_on_master_slide_value_changed"]
-[connection signal="value_changed" from="music_slide" to="." method="_on_music_slide_value_changed"]
-[connection signal="value_changed" from="sfx_slide" to="." method="_on_sfx_slide_value_changed"]
 [connection signal="mouse_entered" from="mute_box" to="." method="_on_mute_box_mouse_entered"]
-[connection signal="pressed" from="mute_box" to="." method="_on_mute_box_pressed"]
 [connection signal="mouse_entered" from="back" to="." method="_on_back_mouse_entered"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
 [connection signal="mouse_entered" from="reset" to="." method="_on_reset_mouse_entered"]
-[connection signal="pressed" from="reset" to="." method="_on_reset_pressed"]
