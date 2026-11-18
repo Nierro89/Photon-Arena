@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b8yafddeas0m4"]
+
+[ext_resource type="Texture2D" uid="uid://djtsdc4pdh4qx" path="res://Sprites/ball_1.png" id="1_gmmk5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rrukj"]
+radius = 18.0
+
+[node name="bumper" type="StaticBody2D" unique_id=1064329924]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1916350005]
+modulate = Color(0, 1, 1, 1)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("1_gmmk5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=478840840]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_rrukj")

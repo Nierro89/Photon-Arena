@@ -6,13 +6,14 @@ var Ball: PackedScene = load("res://Scenes/ball.tscn")
 signal resetPaddle
 
 @onready var music_bg: AudioStreamPlayer = $music_bg
-@export var obstacle_scene: PackedScene #obstacle scene loadpoint.
-@export var spawn_count: int = 6 # Number of instances to create
+@export var obstacle_scene: Array[PackedScene] #obstacles 
 
 const VIEWPORT_WIDTH = 1152
 const VIEWPORT_HEIGHT = 648
 const EDGE_MARGIN = 100
 const DIFFICULTY_WEIGHTS := { "easy": 1.0, "normal": 2.0, "hard": 3.0}
+const MAX_OBSTACLES := 12 
+const MIN_OBSTACLES := 3 
 
 func _ready():
 	startGame()
@@ -49,7 +50,7 @@ func startNextRound():
 	for rotator in get_tree().get_nodes_in_group("rotators"):
 		rotator.queue_free()
 
-	spawn_rotators()
+	spawn_obstacles()
 	
 	countdownAnim.play("countdown")
 	await countdownAnim.animation_finished
@@ -67,24 +68,19 @@ func spawnBall():
 	newBall.launch(direction)
 	get_tree().root.get_child(1).add_child(newBall)
 
-func spawn_rotators() -> void:
-	var half_count = spawn_count / 2.0
-	var left_count = int(ceil(half_count))
-	var right_count = spawn_count - left_count
+func spawn_obstacles() -> void:
+	for old in get_tree().get_nodes_in_group("obstacles"):
+		old.queue_free()
+	
+	var round_number: int = Global.P1_Score + Global.P2_Score + 1
+	var count: int = clampi(MIN_OBSTACLES + round_number / 3, MIN_OBSTACLES, MAX_OBSTACLES)
 
-	# Left side spawns
-	for i in range(left_count):
-		var rotator_instance = obstacle_scene.instantiate()
-		rotator_instance.position = get_random_spawn_position(true)
-		rotator_instance.add_to_group("rotators")
-		add_child(rotator_instance)
-
-	# Right side spawns
-	for i in range(right_count):
-		var rotator_instance = obstacle_scene.instantiate()
-		rotator_instance.position = get_random_spawn_position(false)
-		rotator_instance.add_to_group("rotators")
-		add_child(rotator_instance)
+	for i in count:
+		var scene: PackedScene = obstacle_scene.pick_random()
+		var instance := scene.instantiate()
+		instance.position = get_random_spawn_position(i % 2 == 0)
+		instance.add_to_group("obstacles")
+		add_child(instance)
 
 func get_random_spawn_position(left_side: bool) -> Vector2:
 	var half_width = VIEWPORT_WIDTH / 2.0
