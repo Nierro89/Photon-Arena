@@ -61,8 +61,7 @@ func endGame():
 	get_tree().change_scene_to_file("res://Scenes/end screen.tscn")
 
 func spawnBall():
-	var side := 1.0 if randf() < 0.5 else -1.0
-	var direction := Vector2(side, 0.0).rotated(randi_range(-PI / 3.0, PI / 3.0))
+	var direction := Vector2.from_angle(randf() * TAU)
 	var newBall = Ball.instantiate()
 	newBall.global_position = get_viewport().get_visible_rect().size / 2
 
