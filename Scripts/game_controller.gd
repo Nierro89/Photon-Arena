@@ -10,10 +10,11 @@ signal resetPaddle
 
 const VIEWPORT_WIDTH = 1152
 const VIEWPORT_HEIGHT = 648
-const EDGE_MARGIN = 100
+const EDGE_MARGIN = 120
 const DIFFICULTY_WEIGHTS := { "easy": 1.0, "normal": 2.0, "hard": 3.0}
 const MAX_OBSTACLES := 12 
-const MIN_OBSTACLES := 3 
+const MIN_OBSTACLES := 0 
+const MIN_SPACING := 120.0
 
 func _ready():
 	startGame()
@@ -71,16 +72,28 @@ func spawnBall():
 func spawn_obstacles() -> void:
 	for old in get_tree().get_nodes_in_group("obstacles"):
 		old.queue_free()
-	
 	var round_number: int = Global.P1_Score + Global.P2_Score + 1
 	var count: int = clampi(MIN_OBSTACLES + round_number / 3, MIN_OBSTACLES, MAX_OBSTACLES)
-
+	var placed: Array[Vector2] = []
 	for i in count:
 		var scene: PackedScene = obstacle_scene.pick_random()
 		var instance := scene.instantiate()
-		instance.position = get_random_spawn_position(i % 2 == 0)
+		instance.position = _find_open_position(i % 2 == 0, placed)
+		placed.append(instance.position)
 		instance.add_to_group("obstacles")
 		add_child(instance)
+
+func _find_open_position(left_side: bool, placed: Array[Vector2]) -> Vector2:
+	for attmept in 25:
+		var pos:= get_random_spawn_position(left_side)
+		var clear := true
+		for other in placed:
+			if pos.distance_to(other) < MIN_SPACING:
+				clear = false
+				break
+		if clear:
+			return pos
+	return get_random_spawn_position(left_side)
 
 func get_random_spawn_position(left_side: bool) -> Vector2:
 	var half_width = VIEWPORT_WIDTH / 2.0
@@ -93,7 +106,7 @@ func get_random_spawn_position(left_side: bool) -> Vector2:
 	else:
 		min_x = half_width + EDGE_MARGIN
 		max_x = VIEWPORT_WIDTH - EDGE_MARGIN
-
+	
 	var x = randf_range(min_x, max_x)
 	var y = randf_range(EDGE_MARGIN, VIEWPORT_HEIGHT - EDGE_MARGIN)
 	return Vector2(x, y)

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cfuewk26bb8fn"]
+
+[ext_resource type="Script" uid="uid://de1ychb3c51vo" path="res://Scripts/crate.gd" id="1_rdp7h"]
+[ext_resource type="Texture2D" uid="uid://800necbgq6qc" path="res://Sprites/crate.svg" id="2_l7th0"]
+[ext_resource type="AudioStream" uid="uid://4n81qc33rrcf" path="res://Sounds/score_sfx_pong.ogg" id="3_sh37k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vp67v"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrukj"]
+size = Vector2(52, 52)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1403084346]
+script = ExtResource("1_rdp7h")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1972016526]
+texture = ExtResource("2_l7th0")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1334798358]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=320634581]
+shape = SubResource("RectangleShape2D_vp67v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1843765778]
+shape = SubResource("RectangleShape2D_rrukj")
+
+[node name="sfx_hit" type="AudioStreamPlayer" parent="." unique_id=1347059072]
+stream = ExtResource("3_sh37k")
+bus = &"sfx"

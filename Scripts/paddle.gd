@@ -19,9 +19,9 @@ const MISS_DISTANCE := 90.0
 # When the paddle is loaded into the game, on the main Scene starting, this code will run.
 func _ready():
 	if PaddleID == 1:
-		PaddleSprite.texture = load("res://Sprites/paddle_2.png")
+		PaddleSprite.texture = load("res://Sprites/paddle_blue.svg")
 	elif PaddleID == 2:
-		PaddleSprite.texture = load("res://Sprites/paddle_1.png")
+		PaddleSprite.texture = load("res://Sprites/paddle_red.svg")
 	else:
 		printerr("The PaddleID has not been asigned to 1 or 2.")
 

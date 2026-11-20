@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djtsdc4pdh4qx"
-path="res://.godot/imported/ball_1.png-b069a1afad5b549326292da31264d477.ctex"
+uid="uid://b6q3af6tho5j"
+path="res://.godot/imported/bumper.svg-cd876e9b3f8feee720ff40d12b3dc9b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ball_1.png"
-dest_files=["res://.godot/imported/ball_1.png-b069a1afad5b549326292da31264d477.ctex"]
+source_file="res://Sprites/bumper.svg"
+dest_files=["res://.godot/imported/bumper.svg-cd876e9b3f8feee720ff40d12b3dc9b2.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

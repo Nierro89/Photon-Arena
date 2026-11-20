@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b0f3gxycwndvq"]
+
+[ext_resource type="Script" uid="uid://b232husmt634l" path="res://Scripts/orbit_pair.gd" id="1_h482q"]
+[ext_resource type="Texture2D" uid="uid://ystpsx0uv3tc" path="res://Sprites/orb.svg" id="2_d264t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rrukj"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6phrv"]
+radius = 8.0
+
+[node name="orbit" type="Node2D" unique_id=495075734]
+script = ExtResource("1_h482q")
+
+[node name="OrbA" type="AnimatableBody2D" parent="." unique_id=1506086883]
+
+[node name="Sprite2D" type="Sprite2D" parent="OrbA" unique_id=138480299]
+position = Vector2(-48, 0)
+texture = ExtResource("2_d264t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrbA" unique_id=216569794]
+position = Vector2(-48, 0)
+shape = SubResource("CircleShape2D_rrukj")
+
+[node name="OrbB" type="AnimatableBody2D" parent="." unique_id=300863759]
+
+[node name="Sprite2D" type="Sprite2D" parent="OrbB" unique_id=445669113]
+position = Vector2(48, 0)
+texture = ExtResource("2_d264t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrbB" unique_id=1524461816]
+position = Vector2(48, 0)
+shape = SubResource("CircleShape2D_6phrv")
