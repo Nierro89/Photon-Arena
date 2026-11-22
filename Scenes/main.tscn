@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cfuewk26bb8fn" path="res://Scenes/crate.tscn" id="6_6iyac"]
 [ext_resource type="AudioStream" uid="uid://yuc1eo6w0b6v" path="res://Sounds/HighEnergyGM.ogg" id="7_6bp64"]
 [ext_resource type="PackedScene" uid="uid://b0f3gxycwndvq" path="res://Scenes/orbit_pair.tscn" id="7_fdnlq"]
+[ext_resource type="PackedScene" uid="uid://dnok3i1hibt8q" path="res://Scenes/pause_menu.tscn" id="14_jkdf5"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bo1nx"]
 
@@ -81,3 +82,5 @@ offset_bottom = 48.0
 stream = ExtResource("7_6bp64")
 volume_db = 1.0
 bus = &"music"
+
+[node name="PauseMenu" parent="." unique_id=1874771408 instance=ExtResource("14_jkdf5")]

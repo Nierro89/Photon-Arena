@@ -3,7 +3,7 @@ extends StaticBody2D
 const TEXTURE_INTACT := preload("res://Sprites/crate.svg")
 const TEXTURE_CRACKED := preload("res://Sprites/crate_cracked.svg")
 
-@export var hits_to_break := 3
+@export var hits_to_break := 2
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hitbox: Area2D = $Hitbox

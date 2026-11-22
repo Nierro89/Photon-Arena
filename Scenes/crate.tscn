@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://4n81qc33rrcf" path="res://Sounds/score_sfx_pong.ogg" id="3_sh37k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vp67v"]
-size = Vector2(64, 64)
+size = Vector2(60, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrukj"]
 size = Vector2(52, 52)

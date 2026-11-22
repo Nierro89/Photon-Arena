@@ -7,6 +7,7 @@ signal resetPaddle
 
 @onready var music_bg: AudioStreamPlayer = $music_bg
 @export var obstacle_scene: Array[PackedScene] #obstacles 
+@onready var pause_menu: CanvasLayer = $PauseMenu
 
 const VIEWPORT_WIDTH = 1152
 const VIEWPORT_HEIGHT = 648

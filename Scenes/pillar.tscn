@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c52xgf2x5pdtw" path="res://Sprites/pillar.svg" id="1_iiqsp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkfny"]
-size = Vector2(20, 140)
+size = Vector2(18, 134)
 
 [node name="pillar" type="StaticBody2D" unique_id=1480036441]
 
