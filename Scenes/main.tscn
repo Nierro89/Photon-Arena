@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://x3f0nwtfv3iq" path="res://Scenes/patroller.tscn" id="5_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://c7fxawhe1yxte" path="res://Scenes/score_ui(h_box).tscn" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://cfuewk26bb8fn" path="res://Scenes/crate.tscn" id="6_6iyac"]
-[ext_resource type="AudioStream" uid="uid://yuc1eo6w0b6v" path="res://Sounds/HighEnergyGM.ogg" id="7_6bp64"]
 [ext_resource type="PackedScene" uid="uid://b0f3gxycwndvq" path="res://Scenes/orbit_pair.tscn" id="7_fdnlq"]
+[ext_resource type="AudioStream" uid="uid://7kln5bqgdeqo" path="res://Sounds/background.mp3" id="13_jkdf5"]
 [ext_resource type="PackedScene" uid="uid://dnok3i1hibt8q" path="res://Scenes/pause_menu.tscn" id="14_jkdf5"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bo1nx"]
@@ -79,7 +79,7 @@ expand_mode = 1
 offset_bottom = 48.0
 
 [node name="music_bg" type="AudioStreamPlayer" parent="." unique_id=1948727446]
-stream = ExtResource("7_6bp64")
+stream = ExtResource("13_jkdf5")
 volume_db = 1.0
 bus = &"music"
 

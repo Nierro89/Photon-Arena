@@ -88,6 +88,7 @@ text = "Back"
 
 [node name="hover" type="AudioStreamPlayer" parent="." unique_id=1961443265]
 stream = ExtResource("6_chmkc")
+volume_db = -20.0
 
 [connection signal="mouse_entered" from="VBoxContainer/Control/Easy" to="." method="_on_easy_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/Control/Easy" to="." method="_on_easy_pressed"]

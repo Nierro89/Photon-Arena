@@ -12,9 +12,8 @@ signal resetPaddle
 const VIEWPORT_WIDTH = 1152
 const VIEWPORT_HEIGHT = 648
 const EDGE_MARGIN = 120
-const DIFFICULTY_WEIGHTS := { "easy": 1.0, "normal": 2.0, "hard": 3.0}
 const MAX_OBSTACLES := 12 
-const MIN_OBSTACLES := 0 
+const MIN_OBSTACLES := 0
 const MIN_SPACING := 120.0
 
 func _ready():
@@ -48,10 +47,6 @@ func startNextRound():
 		call_deferred("endGame")
 		return
 
-	# Remove existing rotators before spawning new ones
-	for rotator in get_tree().get_nodes_in_group("rotators"):
-		rotator.queue_free()
-
 	spawn_obstacles()
 	
 	countdownAnim.play("countdown")
@@ -65,9 +60,9 @@ func spawnBall():
 	var direction := Vector2.from_angle(randf() * TAU)
 	var newBall = Ball.instantiate()
 	newBall.global_position = get_viewport().get_visible_rect().size / 2
-
+	
+	add_child(newBall)
 	newBall.launch(direction)
-	get_tree().root.get_child(1).add_child(newBall)
 
 func spawn_obstacles() -> void:
 	for old in get_tree().get_nodes_in_group("obstacles"):
@@ -111,8 +106,3 @@ func get_random_spawn_position(left_side: bool) -> Vector2:
 	var y = randf_range(EDGE_MARGIN, VIEWPORT_HEIGHT - EDGE_MARGIN)
 	return Vector2(x, y)
 
-func _calculate_score(_won: bool) -> int:
-	var weight: float = DIFFICULTY_WEIGHTS.get(Global.cpu_difficulty, 1.0)
-	var margin: int = Global.P1_Score - Global.P2_Score
-	var base: int = 500 + margin * 100
-	return int(base * weight)

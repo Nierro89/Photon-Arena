@@ -71,6 +71,7 @@ text = "QUIT"
 
 [node name="hover" type="AudioStreamPlayer" parent="." unique_id=1658962281]
 stream = ExtResource("4_bpi0q")
+volume_db = -20.0
 
 [connection signal="mouse_entered" from="Buttons/ResumeButton" to="." method="_on_resume_button_mouse_entered"]
 [connection signal="pressed" from="Buttons/ResumeButton" to="." method="_on_resume_button_pressed"]

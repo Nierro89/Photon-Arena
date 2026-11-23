@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://de1ychb3c51vo" path="res://Scripts/crate.gd" id="1_rdp7h"]
 [ext_resource type="Texture2D" uid="uid://800necbgq6qc" path="res://Sprites/crate.svg" id="2_l7th0"]
-[ext_resource type="AudioStream" uid="uid://4n81qc33rrcf" path="res://Sounds/score_sfx_pong.ogg" id="3_sh37k"]
+[ext_resource type="AudioStream" uid="uid://1wxjl4lo4pd5" path="res://Sounds/hit.wav" id="3_rdp7h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vp67v"]
 size = Vector2(60, 60)
@@ -25,5 +25,5 @@ shape = SubResource("RectangleShape2D_vp67v")
 shape = SubResource("RectangleShape2D_rrukj")
 
 [node name="sfx_hit" type="AudioStreamPlayer" parent="." unique_id=1347059072]
-stream = ExtResource("3_sh37k")
+stream = ExtResource("3_rdp7h")
 bus = &"sfx"
